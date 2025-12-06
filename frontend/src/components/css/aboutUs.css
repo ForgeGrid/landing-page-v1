@@ -1,8 +1,8 @@
 /* ===== ABOUT SECTION ===== */
 .about-section {
-  position: absolute;
+  position: relative;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 150px 0;
   color: white;
   margin-top: 75px;

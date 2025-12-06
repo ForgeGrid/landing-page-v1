@@ -2,14 +2,20 @@
  * Default configuration constants for the ForgeGrid landing page
  */
 
-import type { NavItem, SocialLink, HeroContent, WaveConfig, LanyardConfig } from "../types";
+import type {
+  NavItem,
+  SocialLink,
+  HeroContent,
+  WaveConfig,
+  LanyardConfig,
+} from "../types";
 
 export const DEFAULT_NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Product", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Home", href: "home-section" },
+  { label: "Team", href: "team-section" },
+  { label: "Services", href: "services-section" },
+  { label: "Product", href: "product-section" },
+  { label: "Contact", href: "contact-section" },
 ];
 
 // Note: Social links icons should be imported in components that use them
@@ -48,7 +54,7 @@ export const DEFAULT_HERO_CONTENT: HeroContent = {
   },
   scrollButton: {
     enabled: true,
-    targetId: "next-section",
+    targetId: "team-section",
     icon: "/src/assets/arrow.png",
   },
 };
@@ -71,7 +77,6 @@ export const DEFAULT_LANYARD_CONFIG: LanyardConfig = {
 };
 
 export const DEFAULT_SECTION_IDS = {
-  ABOUT: "next-section",
-  HERO: "hero-section",
+  ABOUT: "home-section",
+  HERO: "team-section",
 } as const;
-

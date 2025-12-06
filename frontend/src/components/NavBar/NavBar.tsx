@@ -51,6 +51,13 @@ const NavBar: React.FC<NavBarProps> = ({
 
   const finalSocialLinks = socialLinks || defaultSocialLinksWithIcons;
 
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <header className={`${styles.glassNavbar} ${className || ""}`}>
@@ -66,13 +73,13 @@ const NavBar: React.FC<NavBarProps> = ({
           {/* Center — NAV ITEMS (DESKTOP ONLY) */}
           <nav className={`${styles.navCenter} ${styles.navMenu}`}>
             {navItems.map((item, index) => (
-              <a
+              <button
                 key={`nav-${index}-${item.label}`}
-                href={item.href}
                 className={`${styles.navItem} ${styles.navLink}`}
+                onClick={() => scrollToSection(item.href)}
               >
                 {item.label}
-              </a>
+              </button>
             ))}
           </nav>
 
@@ -88,7 +95,11 @@ const NavBar: React.FC<NavBarProps> = ({
                   className={styles.socialCircle}
                   aria-label={social.label}
                 >
-                  <img src={social.icon} alt={social.label} className={styles.socialIcon} />
+                  <img
+                    src={social.icon}
+                    alt={social.label}
+                    className={styles.socialIcon}
+                  />
                 </a>
               ))}
             </div>
@@ -106,67 +117,49 @@ const NavBar: React.FC<NavBarProps> = ({
             </button>
           </div>
         </div>
-      
-      {/* MOBILE MODAL MENU */}
-      {/* {menuOpen && (
-        <div className={styles.mobileOverlay} onClick={() => setMenuOpen(false)}>
-          <div
-            className={styles.mobileMenu}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className={styles.menuHeader}>
-              <span className={styles.menuTitle}>Menu</span>
-              <button className={styles.closeBtn} onClick={() => setMenuOpen(false)}>✕</button>
-            </div>
 
-            <div className={styles.menuItems}>
-              {items.map((item, index) => (
-                <a key={index} href={item.href} className={styles.menuItem}>
-                  {item.label}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
-      )} */}
-
-      {menuOpen && (
-        <div className={styles.dropdownContainer}>
-          <div className={styles.dropdownMenu}>
-            {/* Menu items */}
-            {navItems.map((item, index) => (
-              <a
-                key={`dropdown-${index}-${item.label}`}
-                href={item.href}
-                className={styles.dropdownItem}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-
-            <div className={styles.dropdownDivider}></div>
-
-            {/* Social items */}
-            <div className={styles.dropdownSocialsRow}>
-              {finalSocialLinks.map((social, i) => (
-                <a
-                  key={`dropdown-social-${i}-${social.label}`}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`${styles.socialCircle} ${styles.openSocialItem}`}
-                  aria-label={social.label}
+        {menuOpen && (
+          <div className={styles.dropdownContainer}>
+            <div className={styles.dropdownMenu}>
+              {/* Menu items */}
+              {navItems.map((item, index) => (
+                <button
+                  key={`dropdown-${index}-${item.label}`}
+                  className={styles.dropdownItem}
+                  onClick={() => {
+                    scrollToSection(item.href);
+                    setMenuOpen(false);
+                  }}
                 >
-                  <img src={social.icon} alt={social.label} className={styles.socialIcon} />
-                </a>
+                  {item.label}
+                </button>
               ))}
+
+              <div className={styles.dropdownDivider}></div>
+
+              {/* Social items */}
+              <div className={styles.dropdownSocialsRow}>
+                {finalSocialLinks.map((social, i) => (
+                  <a
+                    key={`dropdown-social-${i}-${social.label}`}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`${styles.socialCircle} ${styles.openSocialItem}`}
+                    aria-label={social.label}
+                  >
+                    <img
+                      src={social.icon}
+                      alt={social.label}
+                      className={styles.socialIcon}
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      )}
-      
-    </header>
+        )}
+      </header>
     </>
   );
 };

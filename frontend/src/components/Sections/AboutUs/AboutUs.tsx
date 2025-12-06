@@ -10,7 +10,11 @@ import {
   TooltipProvider,
 } from "../../ui/tooltip/tooltip";
 import type { LanyardConfig, FloatingToggleConfig } from "../../../types";
-import { DEFAULT_LANYARD_CONFIG, DEFAULT_SECTION_IDS } from "../../../constants";
+import {
+  DEFAULT_LANYARD_CONFIG,
+  DEFAULT_SECTION_IDS,
+} from "../../../constants";
+import MagicBento from "../../../components/ui/MagicBento/MagicBento";
 
 export interface AboutUsProps {
   sectionId?: string;
@@ -38,7 +42,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
   };
 
   return (
-    <section id={sectionId} className={`about-section ${className || ""}`}>
+    <section id="team-section" className={`about-section ${className || ""}`}>
       <div className="lanyard-overlap">
         <Lanyard
           key={gravityOn ? "gravity-on" : "gravity-off"}
@@ -56,7 +60,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
               <div className="fixed bottom-12 right-11 z-[999999] flex items-center justify-center">
                 <FloatingToggle
                   onToggle={setGravityOn}
-                  sectionId={toggleConfig?.sectionId || sectionId}
+                  sectionId="team-section"
                   threshold={toggleConfig?.threshold}
                   defaultChecked={toggleConfig?.defaultChecked}
                 />
@@ -69,6 +73,19 @@ const AboutUs: React.FC<AboutUsProps> = ({
           </Tooltip>
         </TooltipProvider>
       )}
+
+      <MagicBento
+        textAutoHide={true}
+        enableStars={true}
+        enableSpotlight={true}
+        enableBorderGlow={true}
+        enableTilt={true}
+        enableMagnetism={true}
+        clickEffect={true}
+        spotlightRadius={300}
+        particleCount={12}
+        glowColor="132, 0, 255"
+      />
 
       <div className="space"></div>
     </section>

@@ -102,6 +102,7 @@
   font-weight: 500;
   padding: 6px 0;
   transition: color 0.25s ease;
+  cursor: pointer;
 }
 
 /* Hover brighten */

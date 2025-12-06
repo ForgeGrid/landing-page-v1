@@ -2,14 +2,16 @@ import React from "react";
 import styles from "../../css/Hero.module.css";
 import ArrDown from "../../../assets/arrow.png";
 import type { HeroContent } from "../../../types";
-import { DEFAULT_HERO_CONTENT } from "../../../constants";
+import { DEFAULT_HERO_CONTENT, DEFAULT_SECTION_IDS } from "../../../constants";
 
 export interface HeroProps {
+  sectionId?: string;
   content?: HeroContent;
   className?: string;
 }
 
 const Hero: React.FC<HeroProps> = ({
+  sectionId = DEFAULT_SECTION_IDS.ABOUT,
   content = DEFAULT_HERO_CONTENT,
   className,
 }) => {
@@ -21,7 +23,7 @@ const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className={`${styles.hero} ${className || ""}`}>
+    <section className={`${styles.hero} ${className || ""}`} id={sectionId}>
       {/* Badge */}
       {content.badge && (
         <div className={styles.badge}>
