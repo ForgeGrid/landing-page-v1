@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* === HERO SECTION WRAPPER === */
+.hero {
+  width: 100%;
+  max-width: 900px; /* more balanced width */
+  margin: 0 auto;
+  padding-top: 190px;
+  padding-bottom: 120px;
+
+  text-align: center;
+  position: relative;
+  z-index: 1000;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ensures perfect horizontal centering */
+}
+
+/* === BADGE === */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(121, 80, 255, 0.16);
+  padding: 6px 16px;
+  border-radius: 18px;
+
+  font-family: "Space Mono", monospace;;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #e3d8ff;
+
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  margin-bottom: 26px;
+}
+
+.new {
+  color: #b881ff;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  background: #a866ff;
+  border-radius: 50%;
+}
+
+/* === MAIN TITLE === */
+.title {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 4.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.18;
+  margin-bottom: 22px;
+
+  max-width: 850px; /* improves layout consistency */
+}
+
+/* === SUBTITLE === */
+.subtitle {
+  font-family: "Space Mono", monospace;
+  font-size: 1.05rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 12px;
+
+  color: rgba(255, 255, 255, 0.527);
+  line-height: 1.65;
+
+  margin-bottom: 48px;
+}
+
+/* === BUTTON ROW === */
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  pointer-events: all;
+  flex-wrap: wrap; /* important for small screens */
+}
+
+/* === BUTTON BASE === */
+.primaryBtn,
+.secondaryBtn {
+  padding: 12px 26px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+/* === PRIMARY CTA === */
+.primaryBtn {
+  background: white;
+  color: #111;
+  /* box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25); */
+}
+.primaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px rgba(255, 255, 255, 0.35);
+}
+
+/* === SECONDARY CTA === */
+.secondaryBtn {
+  background: rgba(121, 80, 255, 0.278);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+.secondaryBtn:hover {
+  background: rgba(140, 100, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+.scrollDownWrapper {
+  position: absolute;
+  pointer-events: all;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scrollDownBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.4px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  backdrop-filter: blur(2px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.28s ease;
+}
+
+.scrollDownBtn:hover {
+  border-color: #b99aff; /* same soft purple glow */
+  transform: scale(1.12);
+  background: rgba(185, 154, 255, 0.12);
+}
+
+.arrowIcon {
+  width: 18px;
+  height: 18px;
+  filter: brightness(0.8) invert(1);
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+.scrollDownBtn:hover .arrowIcon {
+  opacity: 1;
+  transform: translateY(2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .scrollDownWrapper {
+    bottom: 28px;
+  }
+
+  .scrollDownBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arrowIcon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 1040px) {
+  .hero {
+    padding-top: 230px;
+  }
+  .subtitle {
+    max-width: 85%;
+  }
+}
+
+/* === RESPONSIVE: TABLET === */
+@media (max-width: 900px) {
+  .title {
+    font-size: 2.5rem;
+    max-width: 600px;
+  }
+
+  .subtitle {
+    font-size: 1.05rem;
+  }
+}
+
+/* === RESPONSIVE: MOBILE === */
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 40%;
+    padding-bottom: 90px;
+    max-width: 92%;
+  }
+
+  .title {
+    font-size: 2.3rem;
+    line-height: 1.25;
+    margin-top: 10px;
+  }
+
+  .subtitle {
+    font-size: 0.78rem;
+    max-width: 90%;
+    margin-top: 10px;
+  }
+
+  .buttonRow {
+    flex-direction: row;
+    width: 100%;
+    gap: 14px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width:45%;
+    margin: 0 auto;
+  } 
+}

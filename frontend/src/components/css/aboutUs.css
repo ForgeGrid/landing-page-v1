@@ -1,0 +1,200 @@
+/* ===== ABOUT SECTION ===== */
+.about-section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 150px 0;
+  color: white;
+  margin-top: 75px;
+  background: radial-gradient(
+      circle at top left,
+      rgba(150, 90, 255, 0.12),
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(80, 180, 255, 0.12),
+      transparent 60%
+    ),
+    #06060a;
+  overflow-x: hidden;
+  overflow-y: visible;
+  z-index: 0;
+}
+
+/* Canvas stays behind everything */
+.about-section canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Center container */
+.about-container {
+  position: relative;
+  z-index: 1;
+
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.lanyard-overlap {
+  position: absolute;
+  top: -120px; /* pull card down into the section */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* same width for the canvas container */
+  height: 100%;
+  z-index: 20; /* above content */
+  pointer-events: auto; /* prevents blocking text interactions */
+}
+
+/* Title */
+.about-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+/* Subtitle */
+.about-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 700px;
+  margin: 0 auto 50px;
+}
+
+/* Content columns */
+.about-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+/* Glass column panels */
+.about-left,
+.about-right {
+  flex: 1;
+  min-width: 300px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 28px;
+  text-align: left;
+}
+
+/* Headings inside panels */
+.about-heading {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #d8caff;
+}
+
+/* Text */
+.about-text {
+  font-size: 1rem;
+  color: rgba(240, 240, 255, 0.85);
+  line-height: 1.6;
+}
+
+/* Features list */
+.about-list {
+  list-style: none;
+  margin-top: 50px;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 1.1rem;
+  color: rgba(240, 240, 255, 0.85);
+}
+
+.about-list-item {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+
+  padding: 14px 22px;
+  border-radius: 14px;
+  text-align: left;
+
+  transition: 0.25s ease;
+}
+
+.about-list-item:hover {
+  background: rgba(180, 120, 255, 0.14);
+  transform: translateX(6px);
+}
+
+.floating-toggle-container {
+  pointer-events: auto !important;
+  z-index: 99999 !important;
+}
+
+/* .tooltip-content {
+  position: fixed !important;
+  z-index: 999999 !important;
+  pointer-events: auto;
+} */
+
+.tooltip-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 6px 0px;
+  margin-bottom: 100px;
+  border-radius: 8px;
+  z-index: 999999 !important;
+}
+
+.toggle-input:checked + .toggle-bg {
+  background: linear-gradient(135deg, #5b5bff, #6b3bff);
+  box-shadow: 0 0 12px rgba(120, 90, 255, 0.6);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+  .about-title {
+    font-size: 2.3rem;
+  }
+
+  .about-content {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-section {
+    margin-top: 125px;
+  }
+  .about-title {
+    font-size: 2rem;
+  }
+
+  .about-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .about-left,
+  .about-right {
+    padding: 22px;
+  }
+
+  .about-list-item {
+    font-size: 0.95rem;
+  }
+}

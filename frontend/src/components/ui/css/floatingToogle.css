@@ -1,0 +1,80 @@
+/* === Floating Toggle Container === */
+.floating-toggle-container {
+  position: fixed;
+  right: 1.5rem; /* slightly closer */
+  bottom: 2.2rem;
+  z-index: 999;
+  transition: all 0.4s ease;
+  display: inline-block;
+  width: auto;
+  height: auto;
+}
+
+.floating-toggle-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.floating-toggle-container.hiddenToggle {
+  opacity: 0;
+  transform: translateY(1rem);
+  pointer-events: none;
+}
+
+/* === Toggle Wrapper === */
+.toggle-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  width: auto;
+}
+
+/* Invisible input */
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* === Compact Capsule === */
+.toggle-bg {
+  width: 2.4rem;   /* smaller */
+  height: 1.3rem;  /* smaller */
+  border-radius: 9999px;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  transition: all 0.25s ease;
+}
+
+.toggle-wrapper:hover .toggle-bg {
+  transform: scale(1.04);
+}
+
+/* Checked state */
+.toggle-input:checked + .toggle-bg {
+  background: rgba(99, 102, 241, 0.75);
+}
+
+/* === Compact Knob === */
+.toggle-knob {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+
+  width: 1rem;    /* smaller */
+  height: 1rem;   /* smaller */
+
+  background: white;
+  border-radius: 50%;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Move knob when toggled */
+.toggle-input:checked ~ .toggle-knob {
+  transform: translateX(1.1rem); /* reduced from 1.5rem */
+}
