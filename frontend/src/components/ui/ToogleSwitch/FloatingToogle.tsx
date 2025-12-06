@@ -46,9 +46,6 @@ export default function FloatingToggle({
 
   return (
     <div
-      className={`floating-toggle-container ${
-        visible ? "visible" : "hiddenToggle"
-      }`}
       style={containerStyle}
     >
       <label className="toggle-wrapper">

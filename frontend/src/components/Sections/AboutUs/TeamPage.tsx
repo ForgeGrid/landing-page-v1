@@ -1,7 +1,17 @@
-import HorizontalCarousel from "../../ui/HorizontalCarousel/HorizontalCarousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../../ui/Carousel/carousel";
 import TeamMemberSection from "./TeamMemberSection";
 
-export default function TeamPage() {
+interface TeamPageProps {
+  gravityOn?: boolean;   // passed from AboutUs
+}
+
+export default function TeamPage({ gravityOn = true }: TeamPageProps) {
   const members = [
     {
       id: "sukesh",
@@ -24,20 +34,26 @@ export default function TeamPage() {
       description: "RAG systems, vector search, embeddings expert.",
       glowColor: "255, 120, 0",
     },
-    {
-      id: "madhan",
-      name: "Madhan",
-      role: "Full-stack Developer",
-      description: "Connects frontend + backend with high-quality code.",
-      glowColor: "0, 255, 100",
-    }
   ];
 
   return (
     <>
-      {members.map(m => (
-        <TeamMemberSection key={m.id} member={m} sectionId={m.id} />
-      ))}
+      <Carousel>
+        <CarouselContent>
+          {members.map((m) => (
+            <CarouselItem>
+              <TeamMemberSection
+                key={m.id}
+                externalGravity={gravityOn}
+                member={m}
+                sectionId={m.id}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </>
   );
 }

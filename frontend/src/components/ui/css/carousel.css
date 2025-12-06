@@ -1,136 +1,169 @@
-.carousel-container {
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #555;
-    border-radius: 24px;
-    padding: 16px;
-    --outer-r: 24px;
-    --p-distance: 12px;
+/* ============================
+   TRUE FULL-VIEWPORT CAROUSEL (edge-to-edge overlay)
+   ============================ */
+
+   .carousel-section {
+    position: fixed;          /* fixed to viewport so it covers whole screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;               /* keep slides flush to viewport edges */
+    z-index: 30;              /* high so it sits above page content */
+    pointer-events: auto;
+    background: transparent;  /* if you want the radial background, move it here */
   }
   
+  /* container now covers full viewport (no rounded edges by default) */
+  .carousel-container {
+    position: absolute;
+    inset: 0;                 /* top:0; bottom:0; left:0; right:0; */
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  
+    background: rgba(6, 6, 10, 0.0); /* keep transparent so background shows */
+    border-radius: 0;
+    backdrop-filter: none;
+  }
+  
+  /* track spans full viewport horizontally */
   .carousel-track {
     display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
   
+  .carousel-track::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* each item becomes full-viewport slide */
   .carousel-item {
-    position: relative;
+    flex: 0 0 100vw;          /* 1 slide = 100% viewport width */
+    min-width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 60px 80px;
+  
+    background: linear-gradient(
+        rgba(6,6,10,0.0),
+        rgba(6,6,10,0.0)
+      );                      /* keep transparent so page bg or canvas shows */
     display: flex;
-    flex-shrink: 0;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-    border: 1px solid #555;
-    border-radius: calc(var(--outer-r) - var(--p-distance));
-    background-color: #0d0716;
-    overflow: hidden;
-    cursor: grab;
-  }
-  
-  .carousel-item:active {
-    cursor: grabbing;
-  }
-  
-  .carousel-container.round {
-    border: 1px solid #555;
-  }
-  
-  .carousel-item.round {
-    background-color: #0d0716;
-    position: relative;
-    bottom: 0.1em;
-    border: 1px solid #555;
     justify-content: center;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start;
+    scroll-snap-align: center;
+    color: #fff;
   }
   
-  .carousel-item-header.round {
-    padding: 0;
-    margin: 0;
+  /* if you still want glass cards inside slides, use an inner wrapper */
+  .carousel-item .card {
+    width: 100%;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 16px;
+    padding: 36px;
   }
   
-  .carousel-indicators-container.round {
-    position: absolute;
-    z-index: 2;
-    bottom: 3em;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .carousel-indicator.active {
-    background-color: #333333;
-  }
-  
-  .carousel-indicator.inactive {
-    background-color: rgba(51, 51, 51, 0.4);
-  }
-  
+  /* titles + content */
   .carousel-item-header {
     margin-bottom: 16px;
-    padding: 20px;
-    padding-top: 20px;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #d8caff;
+  }
+  .carousel-item-content {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    opacity: 0.92;
   }
   
-  .carousel-icon-container {
+  /* indicators */
+  .carousel-indicators-container {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    height: 28px;
-    width: 28px;
+    gap: 10px;
+    z-index: 40;
+  }
+  .carousel-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: 160ms ease;
+  }
+  .carousel-indicator.active {
+    background: linear-gradient(135deg,#5b5bff,#6b3bff);
+    box-shadow: 0 0 8px rgba(120,90,255,0.5);
+    transform: scale(1.25);
+  }
+  
+  /* ============================
+     NAV BUTTON (seam-positioned arrow)
+     ============================ */
+  /* add this anchor/button inside your carousel HTML with class 'carousel-nav' */
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;                /* start centered then shift left slightly to hit the seam */
+    transform: translate(-62%, -50%); /* -62% moves it slightly left of center */
+    width: 44px;
+    height: 44px;
+    display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: #fff;
-  }
-  
-  .carousel-icon {
-    height: 16px;
-    width: 16px;
-    color: #060010;
-  }
-  
-  .carousel-item-content {
-    padding: 20px;
-    padding-bottom: 20px;
-  }
-  
-  .carousel-item-title {
-    margin-bottom: 4px;
-    font-weight: 900;
-    font-size: 18px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(0,0,0,0.18);
+    backdrop-filter: blur(6px);
     color: #fff;
-  }
-  
-  .carousel-item-description {
-    font-size: 14px;
-    color: #fff;
-  }
-  
-  .carousel-indicators-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
-  
-  .carousel-indicators {
-    margin-top: 16px;
-    display: flex;
-    width: 150px;
-    justify-content: space-between;
-    padding: 0 32px;
-  }
-  
-  .carousel-indicator {
-    height: 8px;
-    width: 8px;
-    border-radius: 50%;
     cursor: pointer;
-    transition: background-color 150ms;
+    z-index: 40;
+    transition: transform 140ms ease, box-shadow 140ms ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    pointer-events: auto;
   }
   
-  .carousel-indicator.active {
-    background-color: #fff;
+  .carousel-nav:hover {
+    transform: translate(-62%, -50%) scale(1.06);
+    box-shadow: 0 6px 22px rgba(91,91,255,0.12);
   }
   
-  .carousel-indicator.inactive {
-    background-color: #555;
+  /* small arrow icon inside */
+  .carousel-nav svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    fill: none;
+  }
+  
+  /* ============================
+     RESPONSIVE
+     ============================ */
+  @media (max-width: 900px) {
+    .carousel-item { padding: 40px 28px; }
+    .carousel-nav { left: 50%; transform: translate(-60%, -50%); }
+  }
+  
+  @media (max-width: 600px) {
+    .carousel-item { padding: 28px 18px; }
+    .carousel-nav { width: 38px; height: 38px; transform: translate(-58%, -50%); }
   }
   
