@@ -80,3 +80,28 @@ export const DEFAULT_SECTION_IDS = {
   ABOUT: "home-section",
   HERO: "team-section",
 } as const;
+
+export const TEAM_MEMBERS = [
+  {
+    id: "member-sukesh",
+    name: "Sukesh",
+    role: "AI & Full-Stack Developer",
+    description:
+      "Specializes in RAG systems, frontend performance, and product architecture.",
+    glowColor: "132, 0, 255",
+  },
+  {
+    id: "member-xyz",
+    name: "John Doe",
+    role: "Backend Engineer",
+    description: "Expert in scalable APIs, security, and cloud architecture.",
+    glowColor: "0, 180, 255",
+  },
+  {
+    id: "member-abc",
+    name: "Sarah Lee",
+    role: "UI/UX Designer",
+    description: "Designs modern, clean UI experiences.",
+    glowColor: "255, 120, 0",
+  }
+];

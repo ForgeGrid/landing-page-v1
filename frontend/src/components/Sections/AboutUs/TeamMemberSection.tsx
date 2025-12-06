@@ -1,22 +1,29 @@
 import { useState } from "react";
 import FloatingToggle from "../../ui/ToogleSwitch/FloatingToogle";
 import Lanyard from "../../ui/Lanyard/Lanyard";
-import "../../css/aboutUs.css";
-import "../../ui/css/tooltTip.css";
+import MagicBento from "../../../components/ui/MagicBento/MagicBento";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
   TooltipProvider,
 } from "../../ui/tooltip/tooltip";
+import "../../ui/css/tooltTip.css"
 import type { LanyardConfig, FloatingToggleConfig } from "../../../types";
-import {
-  DEFAULT_LANYARD_CONFIG,
-  DEFAULT_SECTION_IDS,
-} from "../../../constants";
-import MagicBento from "../../../components/ui/MagicBento/MagicBento";
+import { DEFAULT_LANYARD_CONFIG } from "../../../constants";
 
-export interface AboutUsProps {
+import "../../css/aboutUs.css";
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  description?: string;
+  glowColor?: string;
+}
+
+export interface TeamMemberSectionProps {
+  member: TeamMember;
   sectionId?: string;
   lanyardConfig?: LanyardConfig;
   toggleConfig?: FloatingToggleConfig;
@@ -24,14 +31,18 @@ export interface AboutUsProps {
   className?: string;
 }
 
-const AboutUs: React.FC<AboutUsProps> = ({
+export default function TeamMemberSection({
+  member,
+  sectionId = member.id,           // Unique section for each member
   lanyardConfig = DEFAULT_LANYARD_CONFIG,
   toggleConfig,
   showToggle = true,
-  className,
-}) => {
+  className = "",
+}: TeamMemberSectionProps) {
+
   const [gravityOn, setGravityOn] = useState(true);
 
+  // Merge default lanyard config with overrides
   const finalLanyardConfig: LanyardConfig = {
     ...DEFAULT_LANYARD_CONFIG,
     ...lanyardConfig,
@@ -41,7 +52,8 @@ const AboutUs: React.FC<AboutUsProps> = ({
   };
 
   return (
-    <section id="team-section" className={`about-section ${className || ""}`}>
+    <section id="team-section" className={`team-slide about-section${className}`}>
+      
       {/* 3D Lanyard */}
       <div className="lanyard-overlap">
         <Lanyard
@@ -75,7 +87,7 @@ const AboutUs: React.FC<AboutUsProps> = ({
         </TooltipProvider>
       )}
 
-      {/* Magic Bento */}
+      {/* Magic Bento UI */}
       <div className="bento-wrapper">
         <MagicBento
           textAutoHide={true}
@@ -87,21 +99,10 @@ const AboutUs: React.FC<AboutUsProps> = ({
           clickEffect={true}
           spotlightRadius={300}
           particleCount={12}
-          glowColor="132, 0, 255"
+          glowColor={member.glowColor || "132, 0, 255"}
         />
       </div>
+
     </section>
   );
-};
-
-export default AboutUs;
-
-// import TeamPage from "./TeamPage";
-
-// export default function AboutUs() {
-//   return (
-//     <>
-//       <TeamPage />
-//     </>
-//   );
-// }
+}
