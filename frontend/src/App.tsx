@@ -1,5 +1,6 @@
 import "./App.css";
-import { WaveBackground, NavBar, Hero, AboutUs } from "./components";
+import { WaveBackground, NavBar, Hero } from "./components";
+import Team from "./components/Sections/Team/Team";
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <WaveBackground />
       <NavBar />
       <Hero />
-      <AboutUs />
+      <Team />
     </>
   );
 }

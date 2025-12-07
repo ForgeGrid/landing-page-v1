@@ -1,16 +1,8 @@
-import { useState } from "react";
-import FloatingToggle from "../../ui/ToogleSwitch/FloatingToogle";
-import Lanyard from "../../ui/Lanyard/Lanyard";
-import MagicBento from "../../../components/ui/MagicBento/MagicBento";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "../../ui/tooltip/tooltip";
-import "../../ui/css/tooltTip.css";
-import type { LanyardConfig, FloatingToggleConfig } from "../../../types";
 import { DEFAULT_LANYARD_CONFIG } from "../../../constants";
+import type { LanyardConfig, FloatingToggleConfig } from "../../../types";
+import Lanyard from "../../ui/Lanyard/Lanyard";
+import MagicBento from "../../ui/MagicBento/MagicBento";
+import "../../ui/css/tooltTip.css";
 import "../../css/aboutUs.css";
 
 export interface TeamMember {
@@ -34,15 +26,14 @@ export interface TeamMemberSectionProps {
 
 export default function TeamMemberSection({
   member,
-  sectionId = member.id, // Unique section for each member
+  sectionId = member.id,
   lanyardConfig = DEFAULT_LANYARD_CONFIG,
   className = "",
   externalGravity,
 }: TeamMemberSectionProps) {
-  // Parent-controlled gravity override
+  
   const finalGravity = externalGravity ?? true;
 
-  // Merge default lanyard config with overrides
   const finalLanyardConfig: LanyardConfig = {
     ...DEFAULT_LANYARD_CONFIG,
     ...lanyardConfig,
@@ -52,10 +43,8 @@ export default function TeamMemberSection({
   };
 
   return (
-    <section
-      id="team-section"
-      className={`team-slide about-section${className}`}
-    >
+    <section id="team-section" className={`team-slide about-section${className}`}>
+      
       {/* 3D Lanyard */}
       <div className="lanyard-overlap">
         <Lanyard
@@ -82,6 +71,7 @@ export default function TeamMemberSection({
           glowColor={member.glowColor || "132, 0, 255"}
         />
       </div>
+
     </section>
   );
 }

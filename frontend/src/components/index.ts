@@ -1,21 +1,13 @@
-/**
- * Central export file for all components
- */
-
 export { default as NavBar } from "./NavBar/NavBar";
 export type { NavBarProps } from "./NavBar/NavBar";
 
 export { default as Hero } from "./Sections/Hero/Hero";
 export type { HeroProps } from "./Sections/Hero/Hero";
 
-export { default as AboutUs } from "./Sections/AboutUs/AboutUs";
-export type { AboutUsProps } from "./Sections/AboutUs/AboutUs";
+export { default as Team } from "./Sections/Team/Team";
 
 export { default as WaveBackground } from "./Background/WaveBackground";
 export type { WaveBackgroundProps } from "./Background/WaveBackground";
-
-export { default as CardSwap } from "./ui/CardSwap/CardSwap";
-export type { CardSwapProps, CardProps } from "./ui/CardSwap/CardSwap";
 
 export { default as FloatingLines } from "./ui/FloatingLines/FloatingLines";
 

@@ -30,7 +30,6 @@ const NavBar: React.FC<NavBarProps> = ({
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Default social links with icons
   const defaultSocialLinksWithIcons: SocialLink[] = useMemo(
     () => [
       {

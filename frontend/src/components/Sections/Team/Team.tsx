@@ -93,6 +93,7 @@
 
 // export default AboutUs;
 
+import { useState } from "react";
 import TeamPage from "./TeamPage";
 import FloatingToggle from "../../ui/ToogleSwitch/FloatingToogle";
 import {
@@ -102,14 +103,12 @@ import {
   TooltipProvider,
 } from "../../ui/tooltip/tooltip";
 
-import { useState } from "react";
-
-export default function AboutUs() {
+export default function Team() {
   const [gravityOn, setGravityOn] = useState(true);
 
   return (
     <>
-      {/* Floating toggle now belongs here */}
+      {/* Floating toggle */}
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
@@ -127,12 +126,9 @@ export default function AboutUs() {
             {gravityOn ? "Anti-Gravity" : "Gravity"}
           </TooltipContent>
         </Tooltip>
-
       </TooltipProvider>
 
-      {/* Pass the toggle state to children */}
       <TeamPage gravityOn={gravityOn} />
     </>
   );
 }
-

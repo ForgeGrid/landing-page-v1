@@ -8,7 +8,7 @@ import {
 import TeamMemberSection from "./TeamMemberSection";
 
 interface TeamPageProps {
-  gravityOn?: boolean;   // passed from AboutUs
+  gravityOn?: boolean;
 }
 
 export default function TeamPage({ gravityOn = true }: TeamPageProps) {

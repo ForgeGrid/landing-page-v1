@@ -1,7 +1,3 @@
-/**
- * Shared TypeScript types and interfaces for the ForgeGrid landing page
- */
-
 export interface NavItem {
   label: string;
   href: string;

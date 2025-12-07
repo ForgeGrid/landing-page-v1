@@ -1,7 +1,3 @@
-/**
- * Default configuration constants for the ForgeGrid landing page
- */
-
 import type {
   NavItem,
   SocialLink,
@@ -18,8 +14,6 @@ export const DEFAULT_NAV_ITEMS: NavItem[] = [
   { label: "Contact", href: "contact-section" },
 ];
 
-// Note: Social links icons should be imported in components that use them
-// This provides the structure - actual icon imports are handled in NavBar component
 export const DEFAULT_SOCIAL_LINKS: Omit<SocialLink, "icon">[] = [
   {
     label: "LinkedIn",
