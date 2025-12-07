@@ -1,26 +1,21 @@
-/* ===== Transparent Scrollbar with White Thumb + Gradient Border ===== */
-
-/* Scrollbar width */
 ::-webkit-scrollbar {
   width: 12px;
 }
-
-/* Fully transparent track */
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
 /* Thumb with gradient outline */
 ::-webkit-scrollbar-thumb {
-  background: white;               /* solid white center */
+  background: white;
   border-radius: 12px;
-  border: 2px solid transparent;   /* spacing for gradient */
+  border: 2px solid transparent;
   background-clip: padding-box;
 
   /* outer gradient border */
   box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0), /* invisible until hover */
-    0 0 10px rgba(150, 90, 255, 0.0); /* initial glow hidden */
+    0 0 0 2px rgba(255, 255, 255, 0),
+    0 0 10px rgba(150, 90, 255, 0.0);
 
   transition: all 0.25s ease;
 }
@@ -33,7 +28,7 @@
       #a06bff,
       #5cc7ff
     ),
-    0 0 12px rgba(150, 90, 255, 0.4); /* glow */
+    0 0 12px rgba(150, 90, 255, 0.4);
   background: white;
 }
 

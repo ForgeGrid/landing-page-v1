@@ -4,7 +4,7 @@
 /* === HERO SECTION WRAPPER === */
 .hero {
   width: 100%;
-  max-width: 900px; /* more balanced width */
+  max-width: 900px;
   margin: 0 auto;
   padding-top: 190px;
   padding-bottom: 120px;
@@ -16,7 +16,7 @@
 
   display: flex;
   flex-direction: column;
-  align-items: center; /* ensures perfect horizontal centering */
+  align-items: center;
 }
 
 /* === BADGE === */
@@ -25,31 +25,28 @@
   align-items: center;
   gap: 10px;
 
-  background: rgba(121, 80, 255, 0.16);
+  background: rgba(121, 80, 255, 0.175);
   padding: 6px 16px;
-  border-radius: 18px;
+  margin-bottom: 26px;
+  border-radius: 50px;
 
   font-family: "Space Mono", monospace;;
   font-size: 0.85rem;
   font-weight: 500;
   color: #e3d8ff;
 
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.18);
-
-  margin-bottom: 26px;
 }
-
 .new {
   color: #b881ff;
   font-family: "Space Mono", monospace;
   font-weight: 700;
 }
-
 .dot {
   width: 7px;
   height: 7px;
-  background: #a866ff;
+  background: #a159ff;
   border-radius: 50%;
 }
 
@@ -62,7 +59,7 @@
   line-height: 1.18;
   margin-bottom: 22px;
 
-  max-width: 850px; /* improves layout consistency */
+  max-width: 850px;
 }
 
 /* === SUBTITLE === */
@@ -86,7 +83,7 @@
   align-items: center;
   gap: 20px;
   pointer-events: all;
-  flex-wrap: wrap; /* important for small screens */
+  flex-wrap: wrap;
 }
 
 /* === BUTTON BASE === */
@@ -115,7 +112,7 @@
 /* === SECONDARY CTA === */
 .secondaryBtn {
   background: rgba(121, 80, 255, 0.278);
-  color: white;
+  color: rgb(216, 216, 216);
   border: 1px solid rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(8px);
 }
@@ -124,6 +121,7 @@
   transform: translateY(-2px);
 }
 
+/* === SCROLL DOWN === */
 .scrollDownWrapper {
   position: absolute;
   pointer-events: all;
@@ -135,7 +133,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .scrollDownBtn {
   width: 42px;
   height: 42px;
@@ -149,13 +146,11 @@
   cursor: pointer;
   transition: 0.28s ease;
 }
-
 .scrollDownBtn:hover {
   border-color: #b99aff; /* same soft purple glow */
   transform: scale(1.12);
   background: rgba(185, 154, 255, 0.12);
 }
-
 .arrowIcon {
   width: 18px;
   height: 18px;
@@ -163,29 +158,12 @@
   opacity: 0.9;
   transition: 0.2s ease;
 }
-
 .scrollDownBtn:hover .arrowIcon {
   opacity: 1;
   transform: translateY(2px);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .scrollDownWrapper {
-    bottom: 28px;
-  }
-
-  .scrollDownBtn {
-    width: 36px;
-    height: 36px;
-  }
-
-  .arrowIcon {
-    width: 16px;
-    height: 16px;
-  }
-}
-
+/* === RESPONSIVE: LAPTOP == */
 @media (max-width: 1040px) {
   .hero {
     padding-top: 230px;
@@ -238,4 +216,18 @@
     width:45%;
     margin: 0 auto;
   } 
+
+  .scrollDownWrapper {
+    bottom: 28px;
+  }
+
+  .scrollDownBtn {
+    width: 36px;
+    height: 36px;
+  }
+
+  .arrowIcon {
+    width: 16px;
+    height: 16px;
+  }
 }

@@ -2,20 +2,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-/* Hide hamburger on desktop */
-.hamburger {
-  display: none;
-}
-
 /* === FLOATING CENTERED ROUND NAVBAR === */
 .glassNavbar {
   position: fixed;
-  top: 30px; /* moves navbar down slightly */
-  left: 50%; /* center horizontally */
+  top: 30px;
+  left: 50%;
   transform: translateX(-50%);
 
-  width: 88%; /* 80–90% width as requested */
-  max-width: 1200px; /* optional safety max width */
+  width: 88%;
+  max-width: 1200px;
 
   height: 60px;
   padding: 0 30px;
@@ -27,13 +22,17 @@
   background: rgba(10, 10, 20, 0.174);
   backdrop-filter: blur(5px);
 
-  border-radius: 40px; /* makes it rounded */
+  border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.12);
 
   z-index: 9999 !important;
-  overflow: visible; /* prevents GooeyNav overflow */
+  overflow: visible;
 
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25); /* subtle elevated glass shadow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+.glassNavbar a {
+  text-decoration: none;
+  color: white;
 }
 
 /* === INNER LAYOUT CONTAINER === */
@@ -53,8 +52,6 @@
   align-items: center;
   gap: 10px;
 }
-
-/* Circle background */
 .logoIcon {
   width: 34px;
   height: 34px;
@@ -62,9 +59,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-/* Text like FLXSTUDIO */
+  position: relative;
+  animation: logoShine 2.2s infinite ease-in-out;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
 .logoText {
   font-family: var(--logo-font);
   font-size: 1.4rem;
@@ -78,22 +78,35 @@
 
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0);
 }
-
 .logoIcon img,
 .logoIcon svg {
-  width: 100%; /* or 55% for perfect balance */
+  width: 100%;
   height: 100%;
   object-fit: contain;
 }
+@keyframes logoShine {
+  0% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 0px rgba(255, 255, 255, 0.2));
+  }
+}
+.logoIcon:hover {
+  transform: rotateY(360deg) rotateX(18deg) scale(1.1);
+  cursor: pointer;
+}
 
+/* === NAVIGATION MENU === */
 .navMenu {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
 }
-
-/* Base link */
 .navLink {
   position: relative;
   font-size: 0.95rem;
@@ -104,13 +117,9 @@
   transition: color 0.25s ease;
   cursor: pointer;
 }
-
-/* Hover brighten */
 .navLink:hover {
   color: #c4c4c4;
 }
-
-/* Underline animation */
 .navLink::after {
   content: "";
   position: absolute;
@@ -122,20 +131,16 @@
   border-radius: 2px;
   transition: width 0.25s ease;
 }
-
 .navLink:hover::after {
   width: 100%;
 }
 
-/* ============================
-   SOCIAL ICONS (Desktop)
-   ============================ */
+/* === SOCIAL ICONS (DESKTOP) === */
 .socialRight {
   display: flex;
   align-items: center;
   gap: 14px;
 }
-
 .socialCircle {
   width: 35px;
   height: 35px;
@@ -148,21 +153,18 @@
   transition: 0.28s ease;
   backdrop-filter: blur(2px);
 }
-
 .socialCircle:hover {
-  border-color: #b99aff; /* soft purple glow */
+  border-color: #b99aff;
   transform: scale(1.12);
   background: rgba(185, 154, 255, 0.12);
 }
-
 .socialIcon {
   width: 15px;
   height: 15px;
-  filter: brightness(0.8) invert(1); /* convert any icon to white */
+  filter: brightness(0.8) invert(1);
   opacity: 0.9;
   transition: 0.2s ease;
 }
-
 .socialIconBtn {
   width: 28px;
   height: 28px;
@@ -174,12 +176,10 @@
   backdrop-filter: blur(4px);
   transition: 0.25s ease;
 }
-
 .socialIconBtn:hover {
   background: rgba(255, 255, 255, 0.18);
   transform: scale(1.15);
 }
-
 .socialIcon {
   width: 18px;
   height: 18px;
@@ -187,27 +187,22 @@
   opacity: 0.9;
   transition: 0.2s ease;
 }
-
 .socialIconBtn:hover .socialIcon {
   opacity: 1;
 }
 
-/* ============================
-     SOCIALS IN DROPDOWN (Mobile)
-     ============================ */
+/* === SOCIALS IN DROPDOWN (Mobile) === */
 .dropdownDivider {
   height: 1px;
   background: rgba(255, 255, 255, 0.15);
   margin: 10px 0;
 }
-
 .dropdownSocials {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding-top: 4px;
 }
-
 .dropdownSocialItem {
   display: flex;
   align-items: center;
@@ -219,12 +214,10 @@
   border-radius: 8px;
   transition: 0.2s ease;
 }
-
 .dropdownSocialItem:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #c9a8ff;
 }
-
 .dropdownSocialItem img {
   width: 18px;
   height: 18px;
@@ -232,110 +225,14 @@
   object-fit: contain;
 }
 
-/* Style for any links from GooeyNav */
-.glassNavbar a {
-  text-decoration: none;
-  color: white;
-}
-
-/* @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.logoText {
-  background: linear-gradient(
-    120deg,
-    #ff7ce3 0%,
-    #b974ff 25%,
-    #6f5cff 50%,
-    #ff7ce3 100%
-  );
-  background-size: 250% 250%;
-  animation: shimmer 10s ease infinite;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-} */
-
-/* 
-.mobileOverlay {
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.55);
-  z-index: 2000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.mobileMenu {
-  width: 85%;
-  max-width: 340px;
-  background: rgba(20, 20, 30, 0.65);
-  border-radius: 18px;
-  padding: 25px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.12);
-  animation: fadeInUp 0.35s ease;
-}
-
-@keyframes fadeInUp {
-  from { transform: translateY(15px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-
-.menuHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.menuTitle {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-
-.closeBtn {
-  background: transparent;
-  border: none;
-  font-size: 1.4rem;
-  color: white;
-  cursor: pointer;
-}
-
-.menuItems {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.menuItem {
-  color: white;
-  font-size: 1.05rem;
-  text-decoration: none;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  transition: 0.2s;
-}
-
-.menuItem:hover {
-  color: #a982ff;
-} */
-
+/* === DROPDOWN CONTAINER === */
 .dropdownContainer {
   position: fixed;
-  top: 70px; /* just below the navbar */
-  right: 3%; /* align under hamburger */
+  top: 70px; 
+  right: 3%;
   z-index: 2000;
   display: block;
 }
-
 .dropdownMenu {
   background: rgba(20, 20, 30, 0.75);
   backdrop-filter: blur(16px);
@@ -352,7 +249,13 @@
 
   animation: fadeDropdown 0.22s ease;
 }
-
+.dropdownSocialsRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* spacing between icons */
+  padding: 5px 25px;
+}
 @keyframes fadeDropdown {
   from {
     opacity: 0;
@@ -363,7 +266,6 @@
     transform: translateY(0);
   }
 }
-
 .dropdownItem {
   padding: 10px 18px;
   color: white;
@@ -371,12 +273,13 @@
   font-size: 0.95rem;
   transition: 0.2s ease;
 }
-
 .dropdownItem:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #b28aff;
+  color: #c8cdff;
+  cursor: pointer;
 }
 
+/* === HAMBURGER === */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -390,16 +293,6 @@
   padding: 2px;
   z-index: 1200;
 }
-
-.dropdownSocialsRow {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 16px; /* spacing between icons */
-  padding: 5px 25px;
-}
-
-/* each line (use module class .line) */
 .line {
   display: block;
   width: 100%;
@@ -410,20 +303,11 @@
     background 0.2s ease;
   transform-origin: center;
 }
-
-/* small offsets so rotations look natural */
-.line1 {
-  transform-origin: center;
-}
-.line2 {
-  transform-origin: center;
-}
-.line3 {
+.line1, .line2, .line3 {
   transform-origin: center;
 }
 
-/* default state (hamburger) */
-/* OPEN state: transform lines into X */
+/* === HAMBURGER to X === */
 .open .line1 {
   transform: translateY(6px) rotate(45deg);
 }
@@ -434,22 +318,27 @@
   transform: translateY(-7.5px) rotate(-45deg);
 }
 .open .line {
-  background: #a982ff; /* brand color when open */
+  background: #b795ff;
 }
 
 /* === RESPONSIVE BREAKPOINTS === */
 
-/* -------------------------
-   RESPONSIVE BREAKPOINT #1
-   Hide menu at ≤1040px
---------------------------*/
+/* === RESPONSIVE BREAKPOINT (>=1041px) === */
+@media (min-width: 1041px) {
+  .dropdownContainer {
+    display: none !important;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
+
+/* === RESPONSIVE BREAKPOINT (≤1040px) === */
 @media (max-width: 1040px) {
-  /* HIDE NAV MENU */
   .navMenu {
     display: none !important;
   }
 
-  /* SHOW HAMBURGER */
   .hamburger {
     display: flex !important;
     flex-direction: column;
@@ -462,7 +351,6 @@
     cursor: pointer;
   }
 
-  /* KEEP SOCIAL ICONS VISIBLE & RIGHT ALIGNED */
   .navRight {
     display: flex;
     align-items: center;
@@ -472,52 +360,6 @@
   .socialRight {
     display: flex;
     justify-content: center;
-  }
-}
-
-/* -------------------------
-   RESPONSIVE BREAKPOINT #2
-   Move socials into dropdown (mobile)
---------------------------*/
-@media (max-width: 600px) {
-  /* HIDE DESKTOP SOCIAL ICONS */
-  .socialRight {
-    display: none !important;
-  }
-
-  /* REMOVE LOGO TEXT for more room */
-  .logoText {
-    display: none;
-  }
-}
-
-/* ------------------------- */
-
-@media (min-width: 1041px) {
-  .dropdownContainer {
-    display: none !important;
-  }
-  .hamburger {
-    display: none !important;
-  }
-}
-
-@media (max-width: 600px) {
-  /* Hide social icons in navbar */
-  .socialRight {
-    display: none !important;
-  }
-
-  /* Show socials inside dropdown */
-  .dropdownSocialsRow {
-    display: flex !important;
-    justify-content: center;
-    gap: 14px;
-    padding: 12px 0;
-  }
-
-  .dropdownDivider {
-    display: block !important;
   }
 }
 
@@ -531,7 +373,55 @@
   }
 }
 
-/* Tablets & medium screens */
+/* === RESPONSIVE BREAKPOINT (≤600px) Mobile === */
+@media (max-width: 600px) {
+  .socialRight {
+    display: none !important;
+  }
+
+  .logoText {
+    display: none;
+  }
+
+  .dropdownSocialsRow {
+    display: flex !important;
+    justify-content: center;
+    gap: 14px;
+    padding: 12px 0;
+  }
+
+  .dropdownDivider {
+    display: block !important;
+  }
+
+  .glassNavbar {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 94%;
+    max-width: 640px;
+    height: 60px;
+    padding: 0 12px;
+    border-radius: 32px;
+  }
+
+  .navInner {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .dropdownContainer {
+    top: 80px;
+    right: 3%;
+    min-width: 180px;
+  }
+}
+
 @media (max-width: 768px) {
   .glassNavbar {
     height: 60px;
@@ -545,7 +435,7 @@
 
   .navCenter,
   .socialRight {
-    display: none; /* hide nav links */
+    display: none; 
   }
 
   .hamburger {
@@ -579,41 +469,7 @@
   }
 }
 
-/* Small phones (max 600px) */
-@media (max-width: 600px) {
-  .glassNavbar {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 94%;
-    max-width: 640px;
-    height: 60px; /* compact height */
-    padding: 0 12px;
-    border-radius: 32px;
-  }
-
-  .navInner {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    width: 100%;
-  }
-
-  .logoText {
-    display: none;
-  }
-
-  .dropdownContainer {
-    top: 80px;
-    right: 3%;
-    min-width: 180px;
-  }
-}
-
-/* Very small phones (max 420px) */
+/* === RESPONSIVE BREAKPOINT (≤420px) Small Mobile === */
 @media (max-width: 420px) {
   .glassNavbar {
     height: 56px;
