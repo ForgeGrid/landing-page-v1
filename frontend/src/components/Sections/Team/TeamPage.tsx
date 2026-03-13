@@ -2,7 +2,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/Carousel/carousel";
+} from "@/components/ui/Carousel";
 import TeamMemberSection from "./TeamMemberSection";
 
 interface TeamPageProps {
