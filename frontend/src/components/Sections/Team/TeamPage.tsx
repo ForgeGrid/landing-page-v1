@@ -40,19 +40,14 @@ export default function TeamPage({ gravityOn = true }: TeamPageProps) {
     <>
       <Carousel>
         <CarouselContent>
-          {members.map((m) => (
-            <CarouselItem>
-              <TeamMemberSection
-                key={m.id}
-                externalGravity={gravityOn}
-                member={m}
-                sectionId={m.id}
-              />
-            </CarouselItem>
-          ))}
+          <CarouselItem>
+            <TeamMemberSection
+              externalGravity={gravityOn}
+              member={members[0]}
+              sectionId={members[0].id}
+            />
+          </CarouselItem>
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
       </Carousel>
     </>
   );

@@ -2,168 +2,231 @@
    TRUE FULL-VIEWPORT CAROUSEL (edge-to-edge overlay)
    ============================ */
 
-   .carousel-section {
-    position: fixed;          /* fixed to viewport so it covers whole screen */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;               /* keep slides flush to viewport edges */
-    z-index: 30;              /* high so it sits above page content */
-    pointer-events: auto;
-    background: transparent;  /* if you want the radial background, move it here */
-  }
-  
-  /* container now covers full viewport (no rounded edges by default) */
-  .carousel-container {
-    position: absolute;
-    inset: 0;                 /* top:0; bottom:0; left:0; right:0; */
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  
-    background: rgba(6, 6, 10, 0.0); /* keep transparent so background shows */
-    border-radius: 0;
-    backdrop-filter: none;
-  }
-  
-  /* track spans full viewport horizontally */
-  .carousel-track {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow-x: auto;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  
-  .carousel-track::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* each item becomes full-viewport slide */
-  .carousel-item {
-    flex: 0 0 100vw;          /* 1 slide = 100% viewport width */
-    min-width: 100vw;
-    height: 100vh;
-    box-sizing: border-box;
-    padding: 60px 80px;
-  
-    background: linear-gradient(
-        rgba(6,6,10,0.0),
-        rgba(6,6,10,0.0)
-      );                      /* keep transparent so page bg or canvas shows */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    scroll-snap-align: center;
-    color: #fff;
-  }
-  
-  /* if you still want glass cards inside slides, use an inner wrapper */
-  .carousel-item .card {
-    width: 100%;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    backdrop-filter: blur(14px);
-    border-radius: 16px;
-    padding: 36px;
-  }
-  
-  /* titles + content */
-  .carousel-item-header {
-    margin-bottom: 16px;
-    font-size: 2.2rem;
-    font-weight: 800;
-    color: #d8caff;
-  }
-  .carousel-item-content {
-    font-size: 1.15rem;
-    line-height: 1.6;
-    opacity: 0.92;
-  }
-  
-  /* indicators */
-  .carousel-indicators-container {
-    position: absolute;
-    bottom: 28px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 40;
-  }
-  .carousel-indicator {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.18);
-    border: 1px solid rgba(255,255,255,0.25);
-    transition: 160ms ease;
-  }
-  .carousel-indicator.active {
-    background: linear-gradient(135deg,#5b5bff,#6b3bff);
-    box-shadow: 0 0 8px rgba(120,90,255,0.5);
-    transform: scale(1.25);
-  }
-  
-  /* ============================
+.carousel-section {
+  position: relative; /* fixed to viewport so it covers whole screen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0; /* keep slides flush to viewport edges */
+  z-index: 30; /* high so it sits above page content */
+  pointer-events: auto;
+  background: transparent; /* if you want the radial background, move it here */
+}
+
+/* container now covers full viewport (no rounded edges by default) */
+.carousel-container {
+  position: absolute;
+  inset: 0; /* top:0; bottom:0; left:0; right:0; */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  background: rgba(6, 6, 10, 0); /* keep transparent so background shows */
+  border-radius: 0;
+  backdrop-filter: none;
+}
+
+/* track spans full viewport horizontally */
+.carousel-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* each item becomes full-viewport slide */
+.carousel-item {
+  flex: 0 0 100vw; /* 1 slide = 100% viewport width */
+  min-width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 60px 80px;
+
+  background: linear-gradient(
+    rgba(6, 6, 10, 0),
+    rgba(6, 6, 10, 0)
+  ); /* keep transparent so page bg or canvas shows */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  scroll-snap-align: center;
+  color: #fff;
+}
+
+/* if you still want glass cards inside slides, use an inner wrapper */
+.carousel-item .card {
+  width: 100%;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 36px;
+}
+
+/* titles + content */
+.carousel-item-header {
+  margin-bottom: 16px;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #d8caff;
+}
+.carousel-item-content {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+/* indicators */
+.carousel-indicators-container {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 40;
+}
+.carousel-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: 160ms ease;
+}
+.carousel-indicator.active {
+  background: linear-gradient(135deg, #5b5bff, #6b3bff);
+  box-shadow: 0 0 8px rgba(120, 90, 255, 0.5);
+  transform: scale(1.25);
+}
+
+/* ============================
      NAV BUTTON (seam-positioned arrow)
      ============================ */
-  /* add this anchor/button inside your carousel HTML with class 'carousel-nav' */
-  .carousel-nav {
-    position: absolute;
-    top: 50%;
-    left: 50%;                /* start centered then shift left slightly to hit the seam */
-    transform: translate(-62%, -50%); /* -62% moves it slightly left of center */
-    width: 44px;
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.18);
-    background: rgba(0,0,0,0.18);
-    backdrop-filter: blur(6px);
-    color: #fff;
-    cursor: pointer;
-    z-index: 40;
-    transition: transform 140ms ease, box-shadow 140ms ease;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
-    pointer-events: auto;
-  }
-  
-  .carousel-nav:hover {
-    transform: translate(-62%, -50%) scale(1.06);
-    box-shadow: 0 6px 22px rgba(91,91,255,0.12);
-  }
-  
-  /* small arrow icon inside */
-  .carousel-nav svg {
-    width: 18px;
-    height: 18px;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    fill: none;
-  }
-  
-  /* ============================
+/* add this anchor/button inside your carousel HTML with class 'carousel-nav' */
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  left: 50%; /* start centered then shift left slightly to hit the seam */
+  transform: translate(-62%, -50%); /* -62% moves it slightly left of center */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  cursor: pointer;
+  z-index: 40;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  pointer-events: auto;
+}
+
+.carousel-nav:hover {
+  transform: translate(-62%, -50%) scale(1.06);
+  box-shadow: 0 6px 22px rgba(91, 91, 255, 0.12);
+}
+
+/* small arrow icon inside */
+.carousel-nav svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  fill: none;
+}
+
+/* Hover effect */
+.carouselArrowBtn {
+  position: fixed !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+  z-index: 99999 !important;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  border: 1.4px solid rgba(255,255,255,0.22);
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+  transition: 0.28s ease;
+}
+
+/* Position left & right buttons */
+.carouselPrev {
+  left: 32px;
+}
+.carouselNext {
+  right: 32px;
+}
+
+/* White arrow icon */
+.carouselArrowIcon {
+  width: 18px;
+  height: 18px;
+  stroke: white;
+  opacity: 0.9;
+  transition: 0.2s ease;
+}
+
+/* Hover effects */
+.carouselArrowBtn:hover {
+  border-color: #b99aff;
+  background: rgba(185,154,255,0.12);
+  transform: translateY(-50%) scale(1.12);
+}
+
+.carouselArrowBtn:hover .carouselArrowIcon {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+
+/* ============================
      RESPONSIVE
      ============================ */
-  @media (max-width: 900px) {
-    .carousel-item { padding: 40px 28px; }
-    .carousel-nav { left: 50%; transform: translate(-60%, -50%); }
+@media (max-width: 900px) {
+  .carousel-item {
+    padding: 40px 28px;
   }
-  
-  @media (max-width: 600px) {
-    .carousel-item { padding: 28px 18px; }
-    .carousel-nav { width: 38px; height: 38px; transform: translate(-58%, -50%); }
+  .carousel-nav {
+    left: 50%;
+    transform: translate(-60%, -50%);
   }
-  
+}
+
+@media (max-width: 600px) {
+  .carousel-item {
+    padding: 28px 18px;
+  }
+  .carousel-nav {
+    width: 38px;
+    height: 38px;
+    transform: translate(-58%, -50%);
+  }
+}

@@ -31,22 +31,23 @@ export default function TeamMemberSection({
   className = "",
   externalGravity,
 }: TeamMemberSectionProps) {
-  
   const finalGravity = externalGravity ?? true;
 
   const finalLanyardConfig: LanyardConfig = {
     ...DEFAULT_LANYARD_CONFIG,
     ...lanyardConfig,
-    gravity: finalGravity 
+    gravity: finalGravity
       ? lanyardConfig.gravity || DEFAULT_LANYARD_CONFIG.gravity
       : [0, 0, 0],
   };
 
   return (
-    <section id="team-section" className={`team-slide about-section${className}`}>
-      
+    <section
+      id="team-section"
+      className={`team-slide about-section${className}`}
+    >
       {/* 3D Lanyard */}
-      <div className="lanyard-overlap">
+      <div className="team-slide-content lanyard-overlap">
         <Lanyard
           key={finalGravity ? "gravity-on" : "gravity-off"}
           position={finalLanyardConfig.position}
@@ -69,9 +70,15 @@ export default function TeamMemberSection({
           spotlightRadius={300}
           particleCount={12}
           glowColor={member.glowColor || "132, 0, 255"}
-        />
+        >
+          {/* Custom team member content */}
+          <div className="team-member-content">
+            <h2>Sukesh</h2>
+            <p>{member.role}</p>
+            <p>{member.description}</p>
+          </div>
+        </MagicBento>
       </div>
-
     </section>
   );
 }

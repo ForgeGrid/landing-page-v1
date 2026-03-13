@@ -113,12 +113,12 @@ export default function Team() {
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="fixed bottom-12 right-11 z-[999999] flex items-center justify-center">
-              <FloatingToggle
+              {/* <FloatingToggle
                 sectionId="team-section"
                 onToggle={(value) => setGravityOn(value)}
                 defaultChecked={true}
                 threshold={0.3}
-              />
+              /> */}
             </div>
           </TooltipTrigger>
 

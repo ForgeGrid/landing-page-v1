@@ -74,6 +74,17 @@
   max-height: 90vh;
 }
 
+.team-slide {
+  position: relative;
+}
+.team-member-content {
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  max-width: 80%;
+  z-index: 20;
+}
+
 /* Floating Toggle Container */
 .floating-toggle-container {
   pointer-events: auto !important;
