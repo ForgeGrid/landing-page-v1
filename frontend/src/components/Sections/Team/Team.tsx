@@ -95,12 +95,12 @@
 
 import { useState } from "react";
 import TeamPage from "./TeamPage";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "../../ui/tooltip/tooltip";
+// import {
+//   Tooltip,
+//   TooltipTrigger,
+//   TooltipContent,
+//   TooltipProvider,
+// } from "../../ui/tooltip/tooltip";
 
 export default function Team() {
   const [gravityOn] = useState(true);
@@ -108,16 +108,11 @@ export default function Team() {
   return (
     <>
       {/* Floating toggle */}
-      <TooltipProvider>
+      {/* <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
             <div className="fixed bottom-12 right-11 z-[999999] flex items-center justify-center">
-              {/* <FloatingToggle
-                sectionId="team-section"
-                onToggle={(value) => setGravityOn(value)}
-                defaultChecked={true}
-                threshold={0.3}
-              /> */}
+              
             </div>
           </TooltipTrigger>
 
@@ -125,7 +120,7 @@ export default function Team() {
             {gravityOn ? "Anti-Gravity" : "Gravity"}
           </TooltipContent>
         </Tooltip>
-      </TooltipProvider>
+      </TooltipProvider> */}
 
       <TeamPage gravityOn={gravityOn} />
     </>
