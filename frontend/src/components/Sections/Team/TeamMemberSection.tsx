@@ -1,7 +1,7 @@
-import { DEFAULT_LANYARD_CONFIG } from "../../../constants";
-import type { LanyardConfig, FloatingToggleConfig } from "../../../types";
-import Lanyard from "../../ui/Lanyard/Lanyard";
-import MagicBento from "../../ui/MagicBento/MagicBento";
+import { DEFAULT_LANYARD_CONFIG } from "../../../constants/index.ts";
+import type { LanyardConfig, FloatingToggleConfig } from "../../../types/index.ts";
+import Lanyard from "../../ui/Lanyard/Lanyard.tsx";
+import MagicBento from "../../ui/MagicBento/MagicBento.tsx";
 import "../../ui/css/tooltTip.css";
 import "../../css/aboutUs.css";
 
@@ -43,7 +43,7 @@ export default function TeamMemberSection({
 
   return (
     <section
-      id="team-section"
+      id={sectionId}
       className={`team-slide about-section${className}`}
     >
       {/* 3D Lanyard */}

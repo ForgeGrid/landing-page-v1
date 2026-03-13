@@ -95,7 +95,6 @@
 
 import { useState } from "react";
 import TeamPage from "./TeamPage";
-import FloatingToggle from "../../ui/ToogleSwitch/FloatingToogle";
 import {
   Tooltip,
   TooltipTrigger,
@@ -104,7 +103,7 @@ import {
 } from "../../ui/tooltip/tooltip";
 
 export default function Team() {
-  const [gravityOn, setGravityOn] = useState(true);
+  const [gravityOn] = useState(true);
 
   return (
     <>

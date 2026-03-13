@@ -15,7 +15,7 @@ export default function FloatingToggle({
   defaultChecked = true,
   position,
 }: FloatingToggleProps) {
-  const [visible, setVisible] = useState(false);
+  const [, setVisible] = useState(false);
   const [checked, setChecked] = useState(defaultChecked);
 
   useEffect(() => {

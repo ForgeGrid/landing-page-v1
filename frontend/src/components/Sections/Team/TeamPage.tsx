@@ -2,10 +2,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../../ui/Carousel/carousel";
-import TeamMemberSection from "./TeamMemberSection";
+} from "../../ui/Carousel/carousel.tsx";
+import TeamMemberSection from "./TeamMemberSection.tsx";
 
 interface TeamPageProps {
   gravityOn?: boolean;

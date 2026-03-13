@@ -203,7 +203,8 @@ function Band({ maxSpeed = 50, minSpeed = 0, isMobile = false }: BandProps) {
   });
 
   curve.curveType = "chordal";
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  (texture as THREE.Texture).wrapS = THREE.RepeatWrapping;
+  (texture as THREE.Texture).wrapT = THREE.RepeatWrapping;
 
   return (
     <>

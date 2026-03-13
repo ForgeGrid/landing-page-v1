@@ -11,7 +11,7 @@ declare module 'meshline' {
   export const MeshLineMaterial: any;
 }
 
-declare global {
+declare module 'react/jsx-runtime' {
   namespace JSX {
     interface IntrinsicElements {
       meshLineGeometry: any;
@@ -19,3 +19,14 @@ declare global {
     }
   }
 }
+
+declare module 'react/jsx-dev-runtime' {
+  namespace JSX {
+    interface IntrinsicElements {
+      meshLineGeometry: any;
+      meshLineMaterial: any;
+    }
+  }
+}
+
+export {};  // Ensure this file is treated as a module so the augmentation applies globally.
