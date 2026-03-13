@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import styles from "../css/NavBar.module.css";
+import styles from "../css/Navbar.module.css";
 import ForgeGridLogo from "../../assets/ForgeGrid.svg";
 import LinkedInIcon from "../../assets/linkedin.png";
 import EmailIcon from "../../assets/email.png";
