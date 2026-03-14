@@ -2,6 +2,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/Carousel";
 import TeamMemberSection from "./TeamMemberSection";
 
@@ -35,18 +37,25 @@ export default function TeamPage({ gravityOn = true }: TeamPageProps) {
   ];
 
   return (
-    <>
-      <Carousel>
-        <CarouselContent>
-          <CarouselItem>
-            <TeamMemberSection
-              externalGravity={gravityOn}
-              member={members[0]}
-              sectionId={members[0].id}
-            />
-          </CarouselItem>
+    <div className="relative w-full py-12 overflow-hidden">
+      <Carousel opts={{ align: "start", loop: true }} orientation="horizontal" className="w-full">
+        {/* Navigation Arrows at Top */}
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-50">
+          <CarouselPrevious className="text-white pointer-events-auto bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition rounded-full" />
+          <CarouselNext className="text-white pointer-events-auto bg-white/5 backdrop-blur-md border border-white/10 hover:bg-white/10 transition rounded-full" />
+        </div>
+        <CarouselContent className="flex touch-pan-y">
+          {members.map((member) => (
+            <CarouselItem key={member.id} className="min-w-full md:min-w-[100%] lg:min-w-[100%] basis-full">
+              <TeamMemberSection
+                externalGravity={gravityOn}
+                member={member}
+                sectionId={member.id}
+              />
+            </CarouselItem>
+          ))}
         </CarouselContent>
       </Carousel>
-    </>
+    </div>
   );
 }

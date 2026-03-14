@@ -156,10 +156,10 @@
 
 /* Hover effect */
 .carouselArrowBtn {
-  position: fixed !important;
-  top: 50% !important;
+  position: absolute;
+  top: 50%;
   transform: translateY(-50%);
-  z-index: 99999 !important;
+  z-index: 50;
 
   width: 42px;
   height: 42px;
@@ -173,7 +173,7 @@
   justify-content: center;
   align-items: center;
 
-  cursor: pointer;
+  cursor: pointer; /* Arrow cursor */
   transition: 0.28s ease;
 }
 
@@ -185,24 +185,26 @@
   right: 32px;
 }
 
-/* White arrow icon */
+/* Light arrow icon */
 .carouselArrowIcon {
   width: 18px;
   height: 18px;
-  stroke: white;
+  /* stroke: #ffffff !important; */
   opacity: 0.9;
+  filter: invert(1) !important;
   transition: 0.2s ease;
 }
 
 /* Hover effects */
 .carouselArrowBtn:hover {
-  border-color: #b99aff;
-  background: rgba(185,154,255,0.12);
+  border-color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.15);
   transform: translateY(-50%) scale(1.12);
 }
 
 .carouselArrowBtn:hover .carouselArrowIcon {
   opacity: 1;
+  stroke: #ffffff !important;
   transform: translateX(2px);
 }
 

@@ -1,6 +1,15 @@
 import React, { useRef, useEffect, useCallback, useState } from "react";
 import { gsap } from "gsap";
 import "../css/MagicBento.css";
+import Lanyard from "../Lanyard/Lanyard";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../Carousel/Carousel";
+import { Activity, ShieldCheck, Zap, Server, Network } from "lucide-react";
 
 export interface BentoCardProps {
   color?: string;
@@ -9,6 +18,7 @@ export interface BentoCardProps {
   label?: string;
   textAutoHide?: boolean;
   disableAnimations?: boolean;
+  content?: React.ReactNode;
 }
 
 export interface BentoProps {
@@ -37,36 +47,103 @@ const cardData: BentoCardProps[] = [
     title: "Analytics",
     description: "Track user behavior",
     label: "Insights",
+    content: (
+      <div className="flex w-full items-center justify-center p-4 opacity-80 mt-6 md:mt-12 group-hover:opacity-100 transition-opacity pointer-events-none">
+        <Activity className="w-16 h-16 text-indigo-400 mb-4" />
+        <div className="flex flex-col ml-6 gap-3">
+          <div className="h-2 w-32 md:w-48 bg-indigo-500/20 rounded-full">
+            <div className="h-full w-[70%] bg-indigo-500 rounded-full"></div>
+          </div>
+          <div className="h-2 w-24 md:w-32 bg-indigo-500/20 rounded-full">
+            <div className="h-full w-[45%] bg-indigo-400 rounded-full"></div>
+          </div>
+          <div className="h-2 w-28 md:w-40 bg-indigo-500/20 rounded-full">
+            <div className="h-full w-[85%] bg-indigo-400 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    )
   },
   {
     color: "#060010",
     title: "Dashboard",
     description: "Centralized data view",
     label: "Overview",
+    content: (
+      <div className="relative w-full h-[250px] mt-4 rounded-xl overflow-hidden pointer-events-auto flex items-center justify-center">
+         <Lanyard position={[0, 0, 20]} gravity={[0, -20, 0]} fov={20} />
+      </div>
+    )
   },
   {
     color: "#060010",
     title: "Collaboration",
     description: "Work together seamlessly",
     label: "Teamwork",
+    content: (
+      <div className="flex w-full items-center justify-center mt-6 md:mt-12 pointer-events-none">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className="w-12 h-12 md:w-16 md:h-16 rounded-full border border-indigo-500/30 bg-[#060010] flex items-center justify-center -ml-4 first:ml-0 shadow-lg overflow-hidden relative group-hover:-translate-y-2 transition-transform duration-300" style={{ transitionDelay: `${i * 50}ms`, zIndex: 10 - i }}>
+             <img src={`https://i.pravatar.cc/150?img=${i+10}`} alt="avatar" className="w-full h-full rounded-full object-cover opacity-80 mix-blend-luminosity border border-[#060010]" />
+          </div>
+        ))}
+      </div>
+    )
   },
   {
     color: "#060010",
     title: "Automation",
     description: "Streamline workflows",
     label: "Efficiency",
+    content: (
+      <div className="w-full mt-8 md:mt-16 px-12 pointer-events-auto">
+        <Carousel opts={{ align: "start", loop: true }} className="w-full">
+          <CarouselContent>
+            {[
+              { icon: <Zap className="w-6 h-6 text-yellow-400"/>, text: "Auto Deploy" },
+              { icon: <Server className="w-6 h-6 text-emerald-400"/>, text: "Scale DB" },
+              { icon: <Activity className="w-6 h-6 text-blue-400"/>, text: "Monitor" },
+              { icon: <ShieldCheck className="w-6 h-6 text-red-400"/>, text: "Scan code" },
+              { icon: <Network className="w-6 h-6 text-fuchsia-400"/>, text: "Sync APIs" }
+            ].map((item, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-4 rounded-xl border border-white/5 bg-white/5 flex flex-col items-center justify-center gap-3 backdrop-blur-sm cursor-grab active:cursor-grabbing hover:bg-white/10 transition-colors">
+                  {item.icon}
+                  <span className="text-sm text-gray-300 font-medium whitespace-nowrap">{item.text}</span>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="left-[-2rem] bg-black/50 border-white/10 text-white hover:bg-white/10 md:flex hidden" />
+          <CarouselNext className="right-[-2rem] bg-black/50 border-white/10 text-white hover:bg-white/10 md:flex hidden" />
+        </Carousel>
+      </div>
+    )
   },
   {
     color: "#060010",
     title: "Integration",
     description: "Connect favorite tools",
     label: "Connectivity",
+    content: (
+      <div className="flex w-full items-center justify-center mt-6 md:mt-12 pointer-events-none relative h-[120px]">
+         <Network className="w-20 h-20 md:w-32 md:h-32 text-indigo-500/20 absolute z-0 group-hover:scale-110 transition-transform duration-700" strokeWidth={1} />
+         <div className="w-3 h-3 bg-indigo-400 rounded-full shadow-[0_0_15px_rgba(129,140,248,0.8)] absolute top-4 left-1/4 animate-ping" style={{ animationDuration: '3s' }}></div>
+         <div className="w-2 h-2 bg-blue-400 rounded-full shadow-[0_0_10px_rgba(96,165,250,0.8)] absolute bottom-4 right-1/4 animate-ping" style={{ animationDuration: '2s', animationDelay: '1s' }}></div>
+         <div className="w-4 h-4 bg-fuchsia-400 rounded-full shadow-[0_0_15px_rgba(232,121,249,0.8)] absolute top-1/2 right-1/3 animate-ping" style={{ animationDuration: '4s', animationDelay: '0.5s' }}></div>
+      </div>
+    )
   },
   {
     color: "#060010",
     title: "Security",
     description: "Enterprise-grade protection",
     label: "Protection",
+    content: (
+      <div className="flex w-full items-center justify-center mt-6 md:mt-12 pointer-events-none group">
+        <ShieldCheck className="w-24 h-24 md:w-32 md:h-32 text-emerald-500/20 drop-shadow-[0_0_15px_rgba(16,185,129,0.1)] group-hover:text-emerald-400/60 group-hover:drop-shadow-[0_0_25px_rgba(16,185,129,0.4)] transition-all duration-500" strokeWidth={1} />
+      </div>
+    )
   },
 ];
 
@@ -613,7 +690,7 @@ const MagicBento: React.FC<BentoProps & { children?: React.ReactNode }> = ({
                 </div>
                 <div className="magic-bento-card__content">
                   {/* Default text */}
-                  <div className="bento-default-text">
+                  <div className="bento-default-text pointer-events-none relative z-10">
                     <h2 className="magic-bento-card__title">{card.title}</h2>
                     <p className="magic-bento-card__description">
                       {card.description}
@@ -621,7 +698,10 @@ const MagicBento: React.FC<BentoProps & { children?: React.ReactNode }> = ({
                   </div>
 
                   {/* Custom user content */}
-                  <div className="bento-content-slot">{children}</div>
+                  <div className="bento-content-slot w-full relative z-20">
+                    {card.content}
+                    {children}
+                  </div>
                 </div>
               </ParticleCard>
             );
@@ -744,10 +824,17 @@ const MagicBento: React.FC<BentoProps & { children?: React.ReactNode }> = ({
                 <div className="magic-bento-card__label">{card.label}</div>
               </div>
               <div className="magic-bento-card__content">
-                <h2 className="magic-bento-card__title">{card.title}</h2>
-                <p className="magic-bento-card__description">
-                  {card.description}
-                </p>
+                <div className="pointer-events-none relative z-10">
+                  <h2 className="magic-bento-card__title">{card.title}</h2>
+                  <p className="magic-bento-card__description">
+                    {card.description}
+                  </p>
+                </div>
+                {card.content && (
+                  <div className="bento-content-slot w-full relative z-20">
+                    {card.content}
+                  </div>
+                )}
               </div>
             </div>
           );

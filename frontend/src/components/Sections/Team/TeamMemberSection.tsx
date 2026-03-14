@@ -72,10 +72,10 @@ export default function TeamMemberSection({
           glowColor={member.glowColor || "132, 0, 255"}
         >
           {/* Custom team member content */}
-          <div className="team-member-content">
-            <h2>Sukesh</h2>
-            <p>{member.role}</p>
-            <p>{member.description}</p>
+          <div className="team-member-content relative z-30">
+            <h2 className="text-3xl font-bold text-white">{member.name}</h2>
+            <p className="text-xl text-indigo-300 font-medium mt-2">{member.role}</p>
+            <p className="text-gray-400 mt-2 max-w-md">{member.description}</p>
           </div>
         </MagicBento>
       </div>
