@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../../css/Hero.module.css";
-import ArrDown from "../../../assets/arrow.png";
+import arrow from "../../../assets/arrow.png";
 import type { HeroContent } from "../../../types";
 import { DEFAULT_HERO_CONTENT, DEFAULT_SECTION_IDS } from "../../../constants";
 
@@ -69,7 +69,7 @@ const Hero: React.FC<HeroProps> = ({
             aria-label="Scroll to next section"
           >
             <img
-              src={content.scrollButton.icon || ArrDown}
+              src={arrow}
               alt="Scroll Down"
               className={styles.arrowIcon}
             />
