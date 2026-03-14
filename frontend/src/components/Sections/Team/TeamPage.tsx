@@ -28,8 +28,8 @@ export default function TeamPage({ gravityOn = true }: TeamPageProps) {
       glowColor: "0, 200, 255",
     },
     {
-      id: "venkat",
-      name: "Venkat",
+      id: "veraadithya",
+      name: "Vera Adithya",
       role: "Software tester",
       description: "",
       glowColor: "255, 120, 0",
